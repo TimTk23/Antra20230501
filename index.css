@@ -1,0 +1,91 @@
+body {
+    background-color: #fff;
+    width: 600px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+
+#register_box {
+    background-color: rgb(38, 174, 242);
+    width: 50x;
+    padding: 5px;
+    border-radius: 3px;
+    font-size: 12px;
+}
+
+input[type="checkbox"] {
+    width: 10px;
+}
+
+input{
+    width: 50%;
+    padding: 10px;
+    margin: 2px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    display: inline-block;
+}
+
+.mobile_box  {
+    width: 100%;
+}
+
+.email_box {
+    width: 100%;
+}
+
+input:hover {
+    border: 2px solid blue;
+    box-shadow: 0 0 10px rgba(59, 75, 196, 0.2);
+}
+
+input:focus {
+    border: 2px solid blue;
+}
+
+.row_iagree {
+    padding: 5px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.row_names {
+    display: flex;
+    flex-direction: row;
+}
+
+.row_buttons {
+    display: row;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.button {
+    width: 49%;
+    padding: 10px;
+    font-size: 24px;
+    border-radius: 5px;
+    border: none;
+}
+
+#register_button {
+    background-color: #4CAF50;
+}
+
+#signin_button {
+    background-color: #428bca;
+}
+
+.button:active {
+    transform: translateY(4px);
+}
+
+

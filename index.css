@@ -17,8 +17,8 @@ body {
     font-size: 12px;
 }
 
-input[type="checkbox"] {
-    width: 10px;
+[type="checkbox"] {
+    width: 20px;
 }
 
 input{
@@ -28,7 +28,7 @@ input{
     border-radius: 5px;
     border: 1px solid #ccc;
     box-sizing: border-box;
-    display: inline-block;
+    /* display: inline-block; */
 }
 
 .mobile_box  {
@@ -41,23 +41,26 @@ input{
 
 input:hover {
     border: 2px solid blue;
-    box-shadow: 0 0 10px rgba(59, 75, 196, 0.2);
+    /* box-shadow: 0 0 10px rgba(59, 75, 196, 0.2); */
 }
 
 input:focus {
-    border: 2px solid blue;
+    border: 2px solid yellow;
 }
 
 .row_iagree {
     padding: 5px;
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: center;
+}
+
+.check_agree {
+    width: 20%;
 }
 
 .row_names {
     display: flex;
-    flex-direction: row;
 }
 
 .row_buttons {
@@ -84,7 +87,7 @@ input:focus {
     background-color: #428bca;
 }
 
-.button:active {
+.button:hover {
     transform: translateY(4px);
 }
 

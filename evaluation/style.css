@@ -1,0 +1,11 @@
+#app {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+}
+
+.inventory-container {
+    margin-right: 40px;
+    width: 500px;
+}

@@ -15,8 +15,9 @@ const API = (() => {
       body: JSON.stringify(inventoryItem),
       headers: {
           "Content-Type": "application/json",
-      },
-    }).then((data) => data.json());
+      }
+    }).then((data) => data.json())
+    .catch(err => console.log(err));
   };
 
   const updateCart = (id, newAmount) => {
@@ -139,9 +140,10 @@ const View = (() => {
       const id = cartItem.id;
       const amount = cartItem.amount;
       const liTemp = `<li todo-id="${id}">
-      <span>${content}</span>
-      <span>${amount}</span>
-      <button class="delete-btn">Delete</button></li>`;
+        <span id="cartContent${id}">${content}</span>
+        <span>${amount}</span>
+        <button class="delete-btn" id="cartdelete${id}">Delete</button>
+      </li>`;
       cartTemp += liTemp;
     })
     cartItemListEl.innerHTML = cartTemp;
@@ -174,9 +176,7 @@ const Controller = ((model, view) => {
 
       event.preventDefault();
       console.log("incre button");
-
       var id = +event.target.id.substring(3);
-
       var curr = document.getElementById("amount" + id);
       console.log(curr);
       var amount = +curr.innerText + 1;
@@ -207,20 +207,22 @@ const Controller = ((model, view) => {
   const handleAddToCart = () => {
     view.inventoryListEl.addEventListener("click", (event)=>{
       if(event.target.className !== "add-button")
-        return;
+      return;
 
-      event.preventDefault();
-      console.log("handleAddtoCart");
+    event.preventDefault();
+    console.log("add cart button");
 
-      // var id = +event.target.id.substring(3);
-      // var curr = document.getElementById("amount" + id);
-      // var amount = +curr.innerText;
+    var id = +event.target.id.substring(6);
+    var curr = document.getElementById("amount" + id);
+    var amount = +curr.innerText;
+    var name = document.getElementById("content"+id).innerText;
+    
+    console.log("amount", amount, name);
 
-      // model.addToCart();
-      
-      console.log("s", state.inventory);
-      view.renderCart(state.inventory);
+    let obj = {amount, content: name, id};
+    //model.addToCart(obj);
 
+    state.cart = [...state.cart, obj];
     });
   };
 
@@ -230,7 +232,8 @@ const Controller = ((model, view) => {
         return;
       
       event.preventDefault();
-      state.cart = [];
+      console.log(state.cart);
+      event.target.parentNode.parentNode.removeChild(event.target.parentNode);
     })
   };
 

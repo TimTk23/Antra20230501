@@ -6,6 +6,33 @@
 }
 
 .inventory-container {
-    margin-right: 40px;
-    width: 500px;
+    /* margin-right: 40px; */
+    /* width: 500px; */
+}
+
+body {
+    background-color: bisque;
+}
+
+li {
+    display: flex;
+    flex-direction: row;
+    align-content: baseline;
+    width: 100%;
+    border: 1px solid black;
+    border-radius: 5px;
+}
+
+.checkout-btn {
+    position: fixed;
+    bottom: 100px;
+    width: 100px;
+    height: 50px;
+    background-color: aquamarine;
+    border-radius: 5px;
+    border: none;
+}
+
+.checkout-btn:focus {
+    border: black;
 }

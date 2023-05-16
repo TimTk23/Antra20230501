@@ -167,6 +167,9 @@ const Controller = ((model, view) => {
       console.log("init", data);
       state.inventory = data;
     });
+    model.getCart().then(data => {
+      state.cart = data;
+    });
   };
 
   const handleUpdateAmount = () => {
@@ -218,11 +221,19 @@ const Controller = ((model, view) => {
     var name = document.getElementById("content"+id).innerText;
     
     console.log("amount", amount, name);
+    var toUpdate = state.cart.find(o => o.id === id);
+    console.log(toUpdate);
 
-    let obj = {amount, content: name, id};
-    //model.addToCart(obj);
-
-    state.cart = [...state.cart, obj];
+    if(!toUpdate){
+      let obj = {amount, content: name, id};
+      model.addToCart(obj);
+      state.cart = [...state.cart, obj];
+    }
+    else {
+      toUpdate.amount = amount;
+      model.updateCart(id, amount);
+      state.cart = [ ...state.cart.filter(o => o.id !== id), toUpdate];
+    }
     });
   };
 
@@ -233,7 +244,9 @@ const Controller = ((model, view) => {
       
       event.preventDefault();
       console.log(state.cart);
-      event.target.parentNode.parentNode.removeChild(event.target.parentNode);
+      var id = +event.target.parentNode.getAttribute("todo-id");
+      state.cart = state.cart.filter((o) => o.id !== id);
+      //event.target.parentNode.parentNode.removeChild(event.target.parentNode);
     })
   };
 
